@@ -1,12 +1,17 @@
 package superdraw;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
 
-public abstract class Shape extends JPanel {
+public abstract class Shape extends JPanel implements ActionListener, MouseListener, MouseMotionListener {
      int x1, y1, x2, y2;
      Color colour;
-
+         
     public void setX1 (int x1){
         this.x1 = x1;
     }
@@ -37,5 +42,16 @@ public abstract class Shape extends JPanel {
     public Color getColour(){
         return colour;
     }
+     @Override
+    public void mouseEntered(MouseEvent evt) { }
+     @Override
+    public void mouseExited(MouseEvent evt) { } 
+     @Override
+    public void mouseMoved(MouseEvent evt) { }
+     @Override
+    public void mouseClicked(MouseEvent evt) { }
+     @Override
+    public void actionPerformed(ActionEvent evt) {}
+    
     public abstract void draw (Graphics g);  
 }
