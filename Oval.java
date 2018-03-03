@@ -2,13 +2,18 @@ package superdraw;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
+import javax.swing.JLabel;
 
 public class Oval extends BoundedShape {
+    JLabel ovalLabel = new JLabel();
+    
     Oval() {
         super();
         addMouseListener(this);
         addMouseMotionListener(this);
         filledShape=false;
+        ovalLabel.setText("Empty Oval");
+        this.add(ovalLabel);
     }  
     Oval(Color colour) {
         super();
@@ -16,6 +21,8 @@ public class Oval extends BoundedShape {
         addMouseMotionListener(this);
         this.colour = colour;  
         filledShape=true;
+        ovalLabel.setText("Filled Oval");
+        this.add(ovalLabel);
     }  
 
     @Override

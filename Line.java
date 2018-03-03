@@ -1,14 +1,19 @@
 package superdraw;
 import java.awt.Color;
+import static java.awt.Color.white;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
+import javax.swing.JLabel;
+
 public class Line extends Shape {
-     
+    JLabel lineLabel = new JLabel("Line");
+    
     Line (Color colour) {
         super();
         addMouseListener(this);
         addMouseMotionListener(this);
-        this.colour = colour;  
+        this.colour = colour;
+        this.add(lineLabel);      
     }
     
     @Override

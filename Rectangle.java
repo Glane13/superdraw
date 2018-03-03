@@ -3,13 +3,18 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
+import javax.swing.JLabel;
 
 public class Rectangle extends BoundedShape {
+    JLabel rectLabel = new JLabel();
+    
     Rectangle() {
         super();
         addMouseListener(this);
         addMouseMotionListener(this);
         filledShape=false;
+        rectLabel.setText("Empty Rectangle");
+        this.add(rectLabel);
     }
     
     Rectangle(Color colour) {
@@ -18,6 +23,8 @@ public class Rectangle extends BoundedShape {
         addMouseMotionListener(this);
         this.colour = colour;  
         filledShape=true;
+        rectLabel.setText("Filled Rectangle");
+        this.add(rectLabel);
     }  
 
     @Override
