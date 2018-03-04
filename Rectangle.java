@@ -32,7 +32,8 @@ public class Rectangle extends BoundedShape {
         Point pos = evt.getPoint();
         x1 = pos.x;
         y1 = pos.y;
-        repaint();
+        // no repaint here because otherwise it will draw a shadow box in the wrong location
+        // using the previous coordinates
     }
     
     @Override
@@ -53,8 +54,10 @@ public class Rectangle extends BoundedShape {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+         // filledShape determines whether it is an empty or a filled shape
         if(filledShape){
             g.setColor(colour);
+            //logic to allow dragging/drawing in all directions
             if((x2<x1)&&(y2<y1)) {
                 g.fillRect(x2, y2, Math.abs((x1-x2)), Math.abs((y1-y2)));
             }

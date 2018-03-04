@@ -29,6 +29,8 @@ public class Oval extends BoundedShape {
     public void mousePressed(MouseEvent evt) {
         x1 = evt.getX();
         y1 = evt.getY();
+        // no repaint here because otherwise it will draw a shadow box in the wrong location
+        // using the previous coordinates
     }
     
     @Override
@@ -48,8 +50,10 @@ public class Oval extends BoundedShape {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        // filledShape determines whether it is an empty or a filled shape
         if(filledShape){
             g.setColor(colour);
+            //logic to allow dragging/drawing in all directions
             if((x2<x1)&&(y2<y1)) {
                 g.fillOval(x2, y2, Math.abs((x1-x2)), Math.abs((y1-y2)));
             }
