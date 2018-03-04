@@ -55,10 +55,33 @@ public class Rectangle extends BoundedShape {
         super.paintComponent(g);
         if(filledShape){
             g.setColor(colour);
-            g.fillRect(x1, y1, (x2-x1), (y2-y1));
+            if((x2<x1)&&(y2<y1)) {
+                g.fillRect(x2, y2, Math.abs((x1-x2)), Math.abs((y1-y2)));
+            }
+            if((x2<x1)&&(y2>y1)){               
+                g.fillRect(x2, y1, Math.abs((x2-x1)), Math.abs((y2-y1)));
+            }
+            if ((x2>x1)&&(y2<y1)){
+                g.fillRect(x1, y2, Math.abs((x2-x1)), Math.abs((y2-y1)));
+            }
+            if ((x2>x1)&&(y2>y1)){
+                g.fillRect(x1, y1, Math.abs((x2-x1)), Math.abs((y2-y1)));
+            }
         }
         else {
-           g.drawRect(x1, y1, (x2-x1), (y2-y1));
+            g.setColor(colour);
+            if((x2<x1)&&(y2<y1)) {
+                g.drawRect(x2, y2, Math.abs((x1-x2)), Math.abs((y1-y2)));
+            }
+            if((x2<x1)&&(y2>y1)){               
+                g.drawRect(x2, y1, Math.abs((x2-x1)), Math.abs((y2-y1)));
+            }
+            if ((x2>x1)&&(y2<y1)){
+                g.drawRect(x1, y2, Math.abs((x2-x1)), Math.abs((y2-y1)));
+            }
+            if ((x2>x1)&&(y2>y1)){
+                g.drawRect(x1, y1, Math.abs((x2-x1)), Math.abs((y2-y1)));
+            }
         }
     }
     
