@@ -11,7 +11,8 @@ public class MainFrame extends JFrame {
     protected JPanel cards = new JPanel(new CardLayout());
     protected CardLayout cl = (CardLayout)(cards.getLayout());
     private JColorChooser ColourChooser = new JColorChooser();
-    public Color myColour;
+    public Color myColour = Color.BLUE;
+    public Color newColor;
     
 
     public MainFrame () {
@@ -28,6 +29,7 @@ public class MainFrame extends JFrame {
 
         //ColourChooser myChooser = new ColourChooser();
 
+
         ColourChooser myColourChooserButton = new ColourChooser();
 
         myPanel.add(myColourChooserButton);
@@ -36,7 +38,7 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                myColour = JColorChooser.showDialog(null, "Choose a colour", myColour);
+                myColour = JColorChooser.showDialog(MainFrame.this, "Choose a colour", myColour);
 
                 if (myColour == null) {
                     myColour = Color.GREEN;
