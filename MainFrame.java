@@ -48,9 +48,15 @@ public class MainFrame extends JFrame {
                         System.out.println("Selected Oval...");
                         System.out.println("selection variable is displaying: " + selection);
                         cl.show(cards, "oval");
-
                         break;
-
+                    
+                    case "Line" :
+                        selection = "Line";
+                        System.out.println("Selected Line...");
+                        System.out.println("selection variable is displaying: " + selection);
+                        cl.show(cards, "line");
+                        break;
+                        
                     default:
                         selection = "Unknown";
                         System.out.println("No match found.");
@@ -74,6 +80,9 @@ public class MainFrame extends JFrame {
         Shape oval = new Oval();
         oval.setBackground(Color.blue);
         
+        Shape line = new Line();
+        line.setBackground(Color.cyan);
+        
         JPanel nothing = new JPanel();
         JLabel nothingLabel = new JLabel("Nothing to see here");
         nothing.add(nothingLabel);
@@ -81,6 +90,7 @@ public class MainFrame extends JFrame {
         //cards for use in CardLayout
         cards.add(oval, "oval");
         cards.add(rectangle, "rectangle");
+        cards.add(line, "line");
         cards.add(nothing, "nothing");
         
         

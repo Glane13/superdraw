@@ -8,6 +8,13 @@ import javax.swing.JLabel;
 public class Line extends Shape {
     JLabel lineLabel = new JLabel("Line");
     
+    Line () {
+        super();
+        addMouseListener(this);
+        addMouseMotionListener(this);
+        this.add(lineLabel);
+    }
+    
     Line (Color colour) {
         super();
         addMouseListener(this);

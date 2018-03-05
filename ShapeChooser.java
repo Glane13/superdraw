@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class ShapeChooser extends JPanel {
 
-    String[] shapeList = {"Rectangle", "Oval", "triangle"};
+    String[] shapeList = {"Rectangle", "Oval", "Line"};
     JComboBox shapeButton = new JComboBox(shapeList);
 
     public ShapeChooser () {
