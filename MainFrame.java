@@ -10,6 +10,8 @@ public class MainFrame extends JFrame {
     String selection;
     protected JPanel cards = new JPanel(new CardLayout());
     protected CardLayout cl = (CardLayout)(cards.getLayout());
+    private JColorChooser ColourChooser = new JColorChooser();
+    public Color myColour;
     
 
     public MainFrame () {
@@ -19,12 +21,46 @@ public class MainFrame extends JFrame {
 
         JPanel myPanel = new JPanel();
 
-        JButton myButton = new JButton("Choose Colour");
-        myButton.setPreferredSize(new Dimension(100, 75));
+        //JButton myButton = new JButton("Choose Colour");
+        //myButton.setPreferredSize(new Dimension(100, 75));
 
-        ColourChooser myChooser = new ColourChooser();
+        //JButton colourButton = new JButton("Choose colour");
 
-        myPanel.add(myChooser);
+        //ColourChooser myChooser = new ColourChooser();
+
+        ColourChooser myColourChooserButton = new ColourChooser();
+
+        myPanel.add(myColourChooserButton);
+
+        ActionListener myColourListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                myColour = JColorChooser.showDialog(null, "Choose a colour", myColour);
+
+                if (myColour == null) {
+                    myColour = Color.GREEN;
+                }
+            }
+        };
+
+        myColourChooserButton.colourButton.addActionListener(myColourListener);
+
+
+//        colourButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//                myColour = JColorChooser.showDialog(MainFrame.this, "Choose a colour", myColour);
+//
+//                if (myColour == null) {
+//                    myColour = Color.GREEN;
+//                }
+//
+//            }
+//        });
+
+//        myPanel.add(colourButton);
 
         ShapeChooser myShapeComboButton = new ShapeChooser();
         myPanel.add(myShapeComboButton);
@@ -75,13 +111,17 @@ public class MainFrame extends JFrame {
         
         //JPanels for drawing different shapes depending on selection
         Shape rectangle  = new Rectangle();
-        rectangle.setBackground(Color.yellow);
+        //rectangle.setBackground(Color.yellow);
+        // TODO colour should come from color chooser object.
+        rectangle.setColour(myColour);
         
         Shape oval = new Oval();
-        oval.setBackground(Color.blue);
+        //oval.setBackground(Color.blue);
+        oval.setColour(myColour);
         
         Shape line = new Line();
-        line.setBackground(Color.cyan);
+        //line.setBackground(Color.cyan);
+        line.setColour(myColour);
         
         JPanel nothing = new JPanel();
         JLabel nothingLabel = new JLabel("Nothing to see here");
