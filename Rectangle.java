@@ -24,6 +24,7 @@ public class Rectangle extends BoundedShape {
         this.colour = colour;  
         filledShape=true;
         rectLabel.setText("Filled Rectangle");
+        this.setColour(colour);
         this.add(rectLabel);
     }  
 

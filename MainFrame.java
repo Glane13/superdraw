@@ -3,32 +3,37 @@ package superdraw;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.CardLayout;
+import static java.awt.Color.ORANGE;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+//Graham added swing.event.*
+import javax.swing.event.*;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements ChangeListener {
     String selection;
     protected JPanel cards = new JPanel(new CardLayout());
     protected CardLayout cl = (CardLayout)(cards.getLayout());
+    private JColorChooser ColourChooser = new JColorChooser();
+    //public Color myColour = Color.BLUE;
+    public static  Color newColour;
+    //line added by Graham
+    protected JColorChooser tcc;
+
+    ChangeListener changeListener;
     
-
+    
     public MainFrame () {
+
         JFrame myFrame = new JFrame("Super Draw Application");
-
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel myPanel = new JPanel(new GridLayout());               
+        tcc = new JColorChooser(Color.PINK);
+        tcc.getSelectionModel().addChangeListener(this);
+        myPanel.add(tcc);
 
-        JPanel myPanel = new JPanel();
-
-        JButton myButton = new JButton("Choose Colour");
-        myButton.setPreferredSize(new Dimension(100, 75));
-
-        ColourChooser myChooser = new ColourChooser();
-
-        myPanel.add(myChooser);
-
+        
         ShapeChooser myShapeComboButton = new ShapeChooser();
         myPanel.add(myShapeComboButton);
-        
         //ActionListener listening to ShapeButton in myShapeComboButton
         ActionListener myListener = new ActionListener() {
             @Override
@@ -74,24 +79,25 @@ public class MainFrame extends JFrame {
         myPanel.add(myThicknessChooser);
         
         //JPanels for drawing different shapes depending on selection
-        Shape rectangle  = new Rectangle();
-        rectangle.setBackground(Color.yellow);
+        System.out.println("new Colour where Rectangle is instantiated");
         
-        Shape oval = new Oval();
-        oval.setBackground(Color.blue);
         
-        Shape line = new Line();
-        line.setBackground(Color.cyan);
+        //Shape rectangle  = new Rectangle(newColour);
+        //rectangle.setBackground(Color.yellow);
+        // TODO colour should come from color chooser object.
+        //rectangle.setColour(myColour);
         
-        JPanel nothing = new JPanel();
-        JLabel nothingLabel = new JLabel("Nothing to see here");
-        nothing.add(nothingLabel);
+        //oval.setBackground(Color.blue);
+        //oval.setColour(newColour);
+        
+        //line.setBackground(Color.cyan);
+        //line.setColour(newColour);
+        
+        //JPanel nothing = new JPanel();
+        //JLabel nothingLabel = new JLabel("Nothing to see here");
+        //nothing.add(nothingLabel);
 
-        //cards for use in CardLayout
-        cards.add(oval, "oval");
-        cards.add(rectangle, "rectangle");
-        cards.add(line, "line");
-        cards.add(nothing, "nothing");
+        
         
         
         //BorderLayout in order to have buttons in a narrow strip on the top      
@@ -100,6 +106,24 @@ public class MainFrame extends JFrame {
         myFrame.setSize(800, 800);
         myFrame.setVisible(true);
 
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        Color newColour = tcc.getColor();
+        Rectangle rectangle = new Rectangle(newColour);
+        Shape oval = new Oval(newColour);
+        Shape line = new Line();
+
+        //cards for use in CardLayout
+        cards.add(oval, "oval");
+        cards.add(rectangle, "rectangle");
+        cards.add(line, "line");
+        //cards.add(nothing, "nothing");    
+        cards.add(rectangle, "rectangle");
+
+       repaint();
+        
     }
 
 }
