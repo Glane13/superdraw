@@ -7,7 +7,6 @@ import javax.swing.JLabel;
 
 public class Rectangle extends BoundedShape {
     JLabel rectLabel = new JLabel();
-    //Color colour;
     
     Rectangle() {
         super();
