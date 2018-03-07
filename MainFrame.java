@@ -12,8 +12,6 @@ public class MainFrame extends JFrame {
     String selection;
     protected JPanel cards = new JPanel(new CardLayout());
     protected CardLayout cl = (CardLayout)(cards.getLayout());
-    private Color myColour = Color.BLACK;
-    private Color c = Color.BLUE;
 
 
     public MainFrame () {
@@ -23,10 +21,13 @@ public class MainFrame extends JFrame {
 
         JPanel myPanel = new JPanel();
 
+        MyColourListener colourListener = new MyColourListener();
+
         JButton colourButton = new JButton("Choose Colour");
         colourButton.setPreferredSize(new Dimension(100, 75));
 
-        colourButton.addActionListener(new ButtonListener());
+        colourButton.addActionListener(colourListener);
+
         myPanel.add(colourButton);
 
         ShapeChooser myShapeComboButton = new ShapeChooser();
@@ -76,6 +77,22 @@ public class MainFrame extends JFrame {
         LineThicknessChooser myThicknessChooser = new LineThicknessChooser();
         myPanel.add(myThicknessChooser);
 
+
+        Color meColour = colourListener.getColour();
+
+        Shape rectangle  = new Rectangle(meColour);
+        //rectangle.setBackground(c);
+        cards.add(rectangle, "rectangle");
+
+        Shape oval = new Oval(meColour);
+        //oval.setBackground(c);
+        cards.add(oval, "oval");
+
+        Shape line = new Line(meColour);
+        //line.setBackground(c);
+        cards.add(line, "line");
+
+
         //BorderLayout in order to have buttons in a narrow strip on the top
         myFrame.add(myPanel, BorderLayout.NORTH);
         myFrame.add(cards, BorderLayout.CENTER);
@@ -84,23 +101,17 @@ public class MainFrame extends JFrame {
 
     }
 
-    public class ButtonListener implements ActionListener {
+    private static class MyColourListener implements ActionListener {
+
+        private Color colour;
+
+        @Override
         public void actionPerformed(ActionEvent e) {
-            Color c = JColorChooser.showDialog(null, "Choose a Color", myColour);
+            colour = JColorChooser.showDialog(null, "Choose a Color", getColour());
+        }
 
-            Shape rectangle  = new Rectangle(c);
-            //rectangle.setBackground(c);
-            cards.add(rectangle, "rectangle");
-
-            Shape oval = new Oval(c);
-            //oval.setBackground(c);
-            cards.add(oval, "oval");
-
-            Shape line = new Line(c);
-            //line.setBackground(c);
-            cards.add(line, "line");
-
+        private Color getColour () {
+            return colour;
         }
     }
-
 }
