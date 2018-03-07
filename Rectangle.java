@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 
 public class Rectangle extends BoundedShape {
     JLabel rectLabel = new JLabel();
+    //Color colour;
     
     Rectangle() {
         super();
@@ -21,10 +22,9 @@ public class Rectangle extends BoundedShape {
         super();
         addMouseListener(this);
         addMouseMotionListener(this);
-        this.colour = colour;  
+        this.colour = colour;
         filledShape=true;
         rectLabel.setText("Filled Rectangle");
-        this.setColour(colour);
         this.add(rectLabel);
     }  
 
