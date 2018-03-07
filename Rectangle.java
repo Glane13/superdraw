@@ -15,6 +15,7 @@ public class Rectangle extends BoundedShape {
         filledShape=false;
         rectLabel.setText("Empty Rectangle");
         this.add(rectLabel);
+        this.setBackground(Color.LIGHT_GRAY);
     }
     
     Rectangle(Color colour) {
@@ -25,6 +26,8 @@ public class Rectangle extends BoundedShape {
         filledShape=true;
         rectLabel.setText("Filled Rectangle");
         this.add(rectLabel);
+        this.setBackground(Color.LIGHT_GRAY);
+
     }  
 
     @Override

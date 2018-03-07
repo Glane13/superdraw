@@ -32,11 +32,10 @@ public class MainFrame extends JFrame {
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel myPanel = new JPanel();
         JButton colourButton = new JButton("Choose colour");
-        colourButton.setPreferredSize(new Dimension(100, 75));
+        colourButton.setPreferredSize(new Dimension(150, 40));
+               
         ColourActionListener colourActionListener = new ColourActionListener();
         colourButton.addActionListener(colourActionListener);   
-        colourButton.setLayout(null);
-        colourButton.setBounds(10, 10, 50, 50);
         myPanel.add(colourButton);
  
         ShapeChooser myShapeComboButton = new ShapeChooser();

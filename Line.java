@@ -13,6 +13,8 @@ public class Line extends Shape {
         addMouseListener(this);
         addMouseMotionListener(this);
         this.add(lineLabel);
+         this.setBackground(Color.LIGHT_GRAY);
+
     }
     
     Line (Color colour) {
@@ -20,7 +22,9 @@ public class Line extends Shape {
         addMouseListener(this);
         addMouseMotionListener(this);
         this.colour = colour;
-        this.add(lineLabel);      
+        this.add(lineLabel);
+        this.setBackground(Color.LIGHT_GRAY);
+
     }
     
     @Override

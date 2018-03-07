@@ -14,6 +14,8 @@ public class Oval extends BoundedShape {
         filledShape=false;
         ovalLabel.setText("Empty Oval");
         this.add(ovalLabel);
+        this.setBackground(Color.LIGHT_GRAY);
+
     }  
     Oval(Color colour) {
         super();
@@ -23,6 +25,8 @@ public class Oval extends BoundedShape {
         filledShape=true;
         ovalLabel.setText("Filled Oval");
         this.add(ovalLabel);
+        this.setBackground(Color.LIGHT_GRAY);
+
     }  
 
     @Override
