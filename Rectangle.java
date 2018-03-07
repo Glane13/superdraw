@@ -1,13 +1,13 @@
 package superdraw;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Point;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 
 public class Rectangle extends BoundedShape {
     JLabel rectLabel = new JLabel();
-    
+    //Color colour;
+    Integer thickness;
+
     Rectangle() {
         super();
         addMouseListener(this);
@@ -16,16 +16,16 @@ public class Rectangle extends BoundedShape {
         rectLabel.setText("Empty Rectangle");
         this.add(rectLabel);
     }
-    
+
     Rectangle(Color colour) {
         super();
         addMouseListener(this);
         addMouseMotionListener(this);
-        this.colour = colour;  
-        filledShape=true;
+        this.colour = colour;
+        filledShape=false;
         rectLabel.setText("Filled Rectangle");
         this.add(rectLabel);
-    }  
+    }
 
     @Override
     public void mousePressed(MouseEvent evt) {
@@ -35,7 +35,7 @@ public class Rectangle extends BoundedShape {
         // no repaint here because otherwise it will draw a shadow box in the wrong location
         // using the previous coordinates
     }
-    
+
     @Override
     public void mouseDragged(MouseEvent evt) {
         x2 = evt.getX();
@@ -50,18 +50,20 @@ public class Rectangle extends BoundedShape {
         y2 = pos2.y;
         repaint();
     }
-    
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-         // filledShape determines whether it is an empty or a filled shape
+        Graphics2D g2D = (Graphics2D) g;
+        // filledShape determines whether it is an empty or a filled shape
         if(filledShape){
             g.setColor(colour);
+            g2D.setStroke(new BasicStroke(10));
             //logic to allow dragging/drawing in all directions
             if((x2<x1)&&(y2<y1)) {
                 g.fillRect(x2, y2, Math.abs((x1-x2)), Math.abs((y1-y2)));
             }
-            if((x2<x1)&&(y2>y1)){               
+            if((x2<x1)&&(y2>y1)){
                 g.fillRect(x2, y1, Math.abs((x2-x1)), Math.abs((y2-y1)));
             }
             if ((x2>x1)&&(y2<y1)){
@@ -73,10 +75,11 @@ public class Rectangle extends BoundedShape {
         }
         else {
             g.setColor(colour);
+            g2D.setStroke(new BasicStroke(10));
             if((x2<x1)&&(y2<y1)) {
                 g.drawRect(x2, y2, Math.abs((x1-x2)), Math.abs((y1-y2)));
             }
-            if((x2<x1)&&(y2>y1)){               
+            if((x2<x1)&&(y2>y1)){
                 g.drawRect(x2, y1, Math.abs((x2-x1)), Math.abs((y2-y1)));
             }
             if ((x2>x1)&&(y2<y1)){
@@ -87,9 +90,10 @@ public class Rectangle extends BoundedShape {
             }
         }
     }
-    
+
     @Override
     public void draw(Graphics g) {
+
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }
