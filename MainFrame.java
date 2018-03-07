@@ -51,7 +51,7 @@ public class MainFrame extends JFrame {
 
                     case "Rectangle":
                         selection = "Rectangle";
-                        Color selectedColour = colourActionListener.getSelectedColour();                       
+                        //Color selectedColour = colourActionListener.getSelectedColour();                       
                         cl.show(cards, "rectangle");                           
                         break;
                     case "Oval" :
@@ -80,8 +80,8 @@ public class MainFrame extends JFrame {
         Shape line = new Line(Color.white);
 
         //cards for use in CardLayout
-        cards.add(oval, "oval");
         cards.add(rectangle, "rectangle");
+        cards.add(oval, "oval");
         cards.add(line, "line");
                 
         //BorderLayout in order to have buttons in a narrow strip on the top      
