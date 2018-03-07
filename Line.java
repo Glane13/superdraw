@@ -1,6 +1,6 @@
 package superdraw;
 import java.awt.Color;
-import static java.awt.Color.white;
+//import static java.awt.Color.white;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
@@ -24,11 +24,12 @@ public class Line extends Shape {
     }
     
     @Override
-    public void mousePressed(MouseEvent evt) {
-        x1 = evt.getXOnScreen();
-        y1 = evt.getYOnScreen();
+    public void mousePressed(MouseEvent evt) {       
+        x1 = evt.getX();
+        y1 = evt.getY();
     }
     
+    @Override
     public void mouseDragged(MouseEvent evt) {
         x2 = evt.getX();
         y2 = evt.getY();
