@@ -1,4 +1,5 @@
 # SuperDraw
+[demonstrating the use of Java and Object Oriented Programming]
 
 This was a university group project written by myself one other student in January 2018. It was submitted as part of the University of Liverpool Master's Degree in Web Science and Big Data. It was the first assignment in the module about Object Oriented Programming in Java. The assignment was a simple application handling different shapes and implemented using OOP techniques. 
 
